@@ -1,0 +1,11 @@
+<h1>Edit <%= @article.title %></h1>
+
+<%= form_for @article, url: "/articles/#{@article.id}", method: "put" do |f| %>
+	<div>
+		<%= f.text_field :title, value: @article.title %>
+	</div>
+	<div>
+		<%= f.text_area :content, value: @article.content %>
+	</div>
+	<%= f.submit "Update article" %>
+<% end %>

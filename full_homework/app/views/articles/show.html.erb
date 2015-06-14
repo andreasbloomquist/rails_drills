@@ -1,0 +1,11 @@
+<h1><%= @article.title %></h1>
+
+<p><%= @article.content %></p>
+
+<% if current_user.id == @article.user_id %>
+	<%= link_to "Edit", edit_article_path(@article.id) %>
+	<%= form_for @article, url: "/articles/#{@article.id}", method: "delete" do |f| %>
+		<%= f.submit "delete" %>
+	<% end %>
+
+<% end %>
