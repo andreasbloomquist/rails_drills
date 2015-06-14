@@ -1,0 +1,13 @@
+<h1>Show page</h1>
+<h2><%= @article.title %></h2>
+
+<p><%= @article.content%></p>
+
+<% if @current_user.id == @article.user_id %>
+	<ul>
+		<li><%=link_to 'Edit', edit_article_path(@article.id)%></li>
+		<%= form_for @article, url: "/articles/#{@article.id}", method: 'delete' do |f| %>
+			<li><%= f.submit "Delete" %></li>
+		<% end %>			
+	</ul>
+<% end %>

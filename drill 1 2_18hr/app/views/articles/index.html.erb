@@ -1,0 +1,15 @@
+<h1>Articles Index</h1>
+<div>
+	<% if current_user %>
+		<%= link_to 'New Article', new_article_path %>
+	<% end %>
+</div>
+<br>
+<% @articles.each do |a| %>
+	<div>
+		<%= a.title %>
+	</div>
+	<div>
+		<%= a.content %>
+	</div>
+<% end %>

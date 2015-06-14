@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>RailsDrills</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<header id="header" class="">
+	<table>
+		<tr>
+			<td><a href='<%= articles_path %>'>Articles</a></td>
+			<% if current_user %>
+				<td><a href='<%= user_path(@current_user.id)%>'><%= @current_user.first_name %></a></td>
+			<% else %>
+				<td><a href='<%= new_user_path %>'>Sign Up</a></td>
+				<td><a href='<%= login_path %>'>Login</a></td>
+			<% end %>
+		</tr>
+	</table>
+</header>
+
+<%= yield %>
+</body>
+</html>
