@@ -1,0 +1,12 @@
+<h1>Articles index</h1>
+
+<% if current_user %>
+	<%= link_to "New Article", new_article_path %>
+<% end %>
+
+<ul>
+	<% @articles.each do |a| %>
+		<li><a href='<%= article_path(a.id) %>'><%= a.title %></a></li>
+	<% end %>
+</ul>
+

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dill2</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<header id="header" class="">
+	<ul>
+		<a href="<%= articles_path %>">Articles</a>
+			<% if current_user %>
+				<a href="<%= user_path(current_user.id)%>">Profile</a>
+				<%= button_to 'logout', logout_path %>
+			<% else %>
+				<a href="<%= login_path %>">Login</a>
+				<a href="<%= new_user_path %>">Sign Up</a>
+			<% end %>
+	</ul>
+</header>
+<%= yield %>
+
+</body>
+</html>
