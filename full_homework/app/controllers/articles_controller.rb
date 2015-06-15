@@ -11,12 +11,10 @@ class ArticlesController < ApplicationController
 	end
 
 	def create
-		@article = Article.create(article_params)
-		if @article.errors.messages == {}
-			@user = current_user
-			@user = @user.articles << @article
+		article = current_user.articles.create(article_params)
+		if article.errors.messages == {}
 			flash[:notice] = "Article successfully created!"
-			redirect_to article_path(@article.id)
+			redirect_to article_path(article.id)
 		else 
 			flash[:error] = "Hmm something went wrong, both a title and content are required."
 			render :new
